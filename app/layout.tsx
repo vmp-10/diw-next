@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -23,31 +24,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const data = new Date()
+
   return (
     <html lang="en">
-      <body className="
-          h-min-screen 
-          flex
-          flex-col 
-          justify-center 
-          items-center "
-      >
-
-        <header>
-          <h1>A minha App Next!</h1>
-          <nav>
-            <ul className="flex gap-4">
-              <li><Link href= "/">Intro</Link></li>
-            <li><Link href= "/route">Route</Link></li>
-              <li><Link href= "/about">About</Link></li>
-            </ul>
+      <body className='flex flex-col justify-start gap-4 p-20 items-center min-h-screen'>
+        
+        <header className="flex flex-col items-center">
+          <h1>React & Next.js</h1>
+          <nav className="flex gap-4">
+            <Link href="/">Intro</Link>
+            <Link href="/sobre">Sobre</Link>
+            <Link href="/caracteristicas">Caracteristicas</Link>
+            <Link href="/tecnologias">Tecnologias</Link>
           </nav>
-          </header>
-        <main className="bg-amber-200 p-20 m-5 text-black">
+        </header>
+        
+        <main className="bg-blue-200 p-5 rounded-2xl max-w-2xl min-h-[70vh] text-black">
           {children}
         </main>
+        
+        <footer>{data.getFullYear()}</footer>
 
-        <footer>DIW</footer>
       </body>
     </html>
   );
